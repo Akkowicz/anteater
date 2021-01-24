@@ -1,0 +1,18 @@
+---
+- hosts: hardened
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+    - { role: kernel, tags: kernel }
+    - { role: fs, tags: fs }
+    - { role: permissions, tags: permissions }
+    - { role: firewall, tags: firewall }
+    - { role: apparmor, tags: apparmor }
+    - { role: sshd, tags: sshd }
+    - { role: apt, tags: apt }
+    - { role: ids, tags: ids }
+    - { role: clamav, tags: clamav }
+    - { role: auditd, tags: auditd }
+    - { role: rkhunter, tags: rkhunter }
