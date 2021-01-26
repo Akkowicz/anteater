@@ -12,6 +12,11 @@
   apt:
     name: snapd
     state: absent
+  register: snapdremoved
+
+- name: Cleanup snapd mounts
+  shell: "umount /snap/*/* || rm -rf /snap && rm -rf /var/lib/snapd"
+  when: snapdremoved.changed
 
 - name: Remove dependencies that are no longer required
   apt:
