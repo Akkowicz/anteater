@@ -1,0 +1,12 @@
+- name: Harden sysctl tuneables
+  copy:
+    src: files/sysctl.conf
+    dest: /etc/sysctl.d/98-anteater.conf
+    owner: root
+    group: root
+    mode: '0644'
+  register: anteatersysctl
+
+- name: Reload sysctl conf
+  shell: "sysctl --load /etc/sysctl.d/98-anteater.conf"
+  when: anteatersysctl.changed
