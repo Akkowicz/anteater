@@ -7,7 +7,7 @@
   roles:
     - { role: prepare, tags: prepare }
     - { role: kernel, tags: kernel }
-    # - { role: fs, tags: fs }
+    - { role: fs, tags: fs }
     # - { role: permissions, tags: permissions }
     # - { role: firewall, tags: firewall }
     # - { role: apparmor, tags: apparmor }

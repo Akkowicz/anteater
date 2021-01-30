@@ -1,0 +1,31 @@
+- name: Ensure /home has proper mount options
+  lineinfile:
+    dest: /etc/fstab
+    regexp: "^(#)?/home.*bind"
+    line: "/home    /home      ext4    defaults,bind,nosuid,noexec,nodev          1 2"
+    state: present
+    create: true
+
+- name: Ensure /tmp has proper mount options
+  lineinfile:
+    dest: /etc/fstab
+    regexp: "^(#)?/tmp.*bind"
+    line: "/tmp     /tmp       ext4    defaults,bind,nosuid,noexec,nodev     1 2"
+    state: present
+    create: true
+
+- name: Ensure /var has proper mount options
+  lineinfile:
+    dest: /etc/fstab
+    regexp: "^(#)?/var.*bind"
+    line: "/var     /var       ext4    defaults,bind,nosuid                  1 2"
+    state: present
+    create: true
+
+- name: Ensure /boot has proper mount options
+  lineinfile:
+    dest: /etc/fstab
+    regexp: "^(#)?/boot.*bind"
+    line: "/boot    /boot      ext4    defaults,bind,nosuid,noexec,nodev          1 2"
+    state: present
+    create: true
