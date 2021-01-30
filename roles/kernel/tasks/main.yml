@@ -10,3 +10,11 @@
 - name: Reload sysctl conf
   shell: "sysctl --load /etc/sysctl.d/98-anteater.conf"
   when: anteatersysctl.changed
+
+- name: Disable not needed kernel modules
+  copy:
+    src: files/modprobe.conf
+    dest: /etc/modprobe.d/anteater.conf
+    owner: root
+    group: root
+    mode: '0644'
