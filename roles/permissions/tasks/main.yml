@@ -1,0 +1,34 @@
+- name: Find all home directories
+  find:
+    paths:
+      - /home
+    recurse: no
+    file_type: directory
+  register: anteaterhomes
+  changed_when: false
+
+- name: Harden home permissions
+  file:
+    path: "{{ item.path }}"
+    mode: 0700
+  with_items: "{{ anteaterhomes.files }}"
+
+- name: Harden boot permissions
+  file:
+    path: /boot
+    mode: 0700
+
+- name: Harden usr permissions
+  file:
+    path: /usr/src
+    mode: 0700
+
+- name: Harden modules permissions
+  file:
+    path: /lib/modules
+    mode: 0700
+
+- name: Harden usr modules permissions
+  file:
+    path: /usr/lib/modules
+    mode: 0700
