@@ -1,0 +1,25 @@
+- name: Install ufw
+  apt:
+    name: ufw
+    state: present
+
+- name: Set logging
+  ufw:
+    logging: "on"
+
+- name: Rate limit standard ssh port
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: Rate limit custom SSH port
+  ufw:
+    rule: limit
+    port: "{{ custom_ssh_port }}"
+    proto: tcp
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: deny
