@@ -29,3 +29,11 @@
     line: "/boot    /boot      ext4    defaults,bind,nosuid,noexec,nodev          1 2"
     state: present
     create: true
+
+- name: Ensure /dev/shm has proper mount options
+  lineinfile:
+    dest: /etc/fstab
+    regexp: "^(#)?/dev/shm.*noexec"
+    line: "tmpfs    /dev/shm    tmpfs  nosuid,noexec,nodev 0 0"
+    state: present
+    create: true
