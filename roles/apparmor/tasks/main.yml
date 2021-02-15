@@ -1,0 +1,8 @@
+- name: Install additional apparmor profiles and tools
+  apt:
+    name:
+      - apparmor-profiles
+      - apparmor-profiles-extra
+      - apparmor-utils
+      - apparmor-easyprof
+    state: present

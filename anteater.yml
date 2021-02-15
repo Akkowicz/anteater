@@ -10,7 +10,7 @@
     - { role: fs, tags: fs }
     - { role: permissions, tags: permissions }
     - { role: firewall, tags: firewall }
-    # - { role: apparmor, tags: apparmor }
+    - { role: apparmor, tags: apparmor }
     # - { role: sshd, tags: sshd }
     # - { role: apt, tags: apt }
     # - { role: ids, tags: ids }
